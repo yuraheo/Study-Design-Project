@@ -1,0 +1,14 @@
+---
+title: "322 Study Design Project"
+author: "Kathleen Zhang, Yura Heo"
+date: "October 20th, 2025"
+format: 
+  pdf:
+    documentclass: article
+    fontsize: 11pt
+geometry: margin=1in
+execute: 
+  warning: false
+  message: false
+  echo: false
+---
