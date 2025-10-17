@@ -45,4 +45,4 @@ What is an estimate of the total number of undergraduate students enrolled in co
  website.
  
  
- NOrth Carolina undergrad students: acceptance rate proportional to student faculty ratio
+ NOrth Carolina undergrad students: average annual cost proportional to student faculty ratio
