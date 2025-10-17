@@ -17,20 +17,32 @@ execute:
 What is an estimate of the total number of undergraduate students enrolled in colleges?
  Design your survey with the goal of answering this question most accurately.
  
- - One stage PPS with replacement
-
+ - Stratified SRS of colleges
+ - Strata based school size and public/private
+ - 6 strata 
+ - sort by name
  
  # 2. 
  What fraction of colleges have a major in statistical science? Use your sample to estimate
  this fraction; do not get the answer by filtering the schools.
  
  - Stratified SRS of colleges
+ - Strata based school size and public/private
+ - 6 strata 
+ - sort by name
  
  # 3. 
  What is the average of the median earnings among alumni from public schools? From private
  schools (combine for profit and not for profit private schools)?
  
- - Stratified SRS
+ 
+ - Stratified SRS for acceptance rate 4 categories
+
+ 
+ 
  # 4. 
   Answer one other question that interests you from the data that you could collect from the
  website.
+ 
+ 
+ NOrth Carolina undergrad students: acceptance rate proportional to student faculty ratio
