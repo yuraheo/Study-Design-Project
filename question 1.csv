@@ -1,0 +1,62 @@
+stratum,type,size,Nh,nh,sampled_index,weight,fpc,school_name,undergrad_enrollment
+Public_Small,Public,Small,824,9,134,91.55555555555556,824,Colby Community College,837
+Public_Small,Public,Small,824,9,419,91.55555555555556,824,Moore Norman Technology Center,363
+Public_Small,Public,Small,824,9,652,91.55555555555556,824,Tennessee College of Applied Technology Northwest,681
+Public_Small,Public,Small,824,9,565,91.55555555555556,824,Robert Morgan Educational Center and Technical College,868
+Public_Small,Public,Small,824,9,335,91.55555555555556,824,Lake Technical College,738
+Public_Small,Public,Small,824,9,367,91.55555555555556,824,Mahoning County Career and Technical Center,74
+Public_Small,Public,Small,824,9,352,91.55555555555556,824,Little Big Horn College,339
+Public_Small,Public,Small,824,9,157,91.55555555555556,824,CT Aerotech,34
+Public_Small,Public,Small,824,9,107,91.55555555555556,824,Charlotte Technical College,295
+Public_Medium,Public,Medium,861,10,251,86.1,861,Gateway Technical College,4657
+Public_Medium,Public,Medium,861,10,304,86.1,861,Indiana University-Northwest,2582
+Public_Medium,Public,Medium,861,10,247,86.1,861,Gadsden State Community College,3619
+Public_Medium,Public,Medium,861,10,789,86.1,861,University of Washington-Bothell Campus,5228
+Public_Medium,Public,Medium,861,10,250,86.1,861,GateWay Community College,3473
+Public_Medium,Public,Medium,861,10,330,86.1,861,Kean University,10842
+Public_Medium,Public,Medium,861,10,155,86.1,861,Community College of Rhode Island,11455
+Public_Medium,Public,Medium,861,10,795,86.1,861,University of Wisconsin-Green Bay,6230
+Public_Medium,Public,Medium,861,10,398,86.1,861,Metropolitan State University of Denver,14932
+Public_Medium,Public,Medium,861,10,713,86.1,861,University of Alaska Fairbanks,4027
+Public_Large,Public,Large,176,2,62,88,176,Louisiana State University and Agricultural & Mechanical College,29207
+Public_Large,Public,Large,176,2,171,88,176,Virginia Polytechnic Institute and State University,30435
+Private_Small,Private,Small,3130,35,2122,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,244,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,2199,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,2173,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,1474,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,3074,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,836,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,996,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,258,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,2982,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,1041,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,177,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,2711,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,1655,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,12,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,1740,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,350,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,2510,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,3114,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,2448,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,1370,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,1071,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,523,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,3019,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,2929,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,486,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,3006,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,1421,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,1069,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,1684,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,2761,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,1712,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,2519,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,473,89.42857142857143,3130,,NA
+Private_Small,Private,Small,3130,35,2220,89.42857142857143,3130,,NA
+Private_Medium,Private,Medium,381,4,100,95.25,381,,NA
+Private_Medium,Private,Medium,381,4,192,95.25,381,,NA
+Private_Medium,Private,Medium,381,4,196,95.25,381,,NA
+Private_Medium,Private,Medium,381,4,181,95.25,381,,NA
+Private_Large,Private,Large,23,1,12,23,23,,NA

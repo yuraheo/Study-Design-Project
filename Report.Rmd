@@ -35,11 +35,11 @@ What is an estimate of the total number of undergraduate students enrolled in co
 
 strata_plan <- tribble(
   ~type,    ~size,   ~Nh,  ~nh,
-  "Public", "Small",   824, 22,
-  "Public", "Medium",  861, 23,
-  "Public", "Large",   176,  5,
-  "Private","Small",    23,  1,
-  "Private","Medium",  381,  8,
+  "Public", "Small",   824,  9,
+  "Public", "Medium",  861, 10,
+  "Public", "Large",   176,  2,
+  "Private","Small",  3130, 35,
+  "Private","Medium",  381,  4,
   "Private","Large",    23,  1
 ) # based on proportional allocation, sums to 60
 
@@ -62,13 +62,14 @@ template <- sample_index_df %>%
     undergrad_enrollment = NA_real_, # <-- fill manually
   )
 
-write_csv(template, "q1.csv")
+write_csv(template, "question 1.csv")
 
 ```
  
 We estimated the total number of U.S. undergraduates using a stratified simple random sample from the College Scorecard. I defined six strata by crossing school type (Public vs. Private, where Private combines non-profit and for-profit) with size (Small, Medium, Large). For each stratum, we constructed a sampling frame directly from the Scorecard search pages filtered to undergraduate-granting programs, then randomly sampled institutions within stratum. we recorded each sampled school’s undergraduate enrollment and used a Horvitz–Thompson estimator for the population total with stratum weights $w_h = N_h/n_h$ and finite population corrections $N_h$. This stratification targets the main drivers of enrollment (size and sector), yielding higher precision than a single SRS.
 
-. Variance and 95% confidence intervals were computed with the
+
+
  
  # 2. 
  What fraction of colleges have a major in statistical science? Use your sample to estimate
