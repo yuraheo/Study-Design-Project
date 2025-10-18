@@ -13,6 +13,16 @@ execute:
   echo: false
 ---
 
+```{r}
+library(dplyr)
+library(readr)
+library(stringr)
+library(tibble)
+
+set.seed(322)
+```
+
+
 # 1. 
 What is an estimate of the total number of undergraduate students enrolled in colleges?
  Design your survey with the goal of answering this question most accurately.
@@ -21,6 +31,44 @@ What is an estimate of the total number of undergraduate students enrolled in co
  - Strata based school size and public/private
  - 6 strata 
  - sort by name
+```{r}
+
+strata_plan <- tribble(
+  ~type,    ~size,   ~Nh,  ~nh,
+  "Public", "Small",   824, 22,
+  "Public", "Medium",  861, 23,
+  "Public", "Large",   176,  5,
+  "Private","Small",    23,  1,
+  "Private","Medium",  381,  8,
+  "Private","Large",    23,  1
+) # based on proportional allocation, sums to 60
+
+sample_index_df <- strata_plan %>%
+  rowwise() %>%
+  mutate(sampled_index = list(sample.int(Nh, size = nh, replace = FALSE))) %>%
+  tidyr::unnest(sampled_index) %>%
+  ungroup()
+
+# Leave name and undergrad_enrollment blank/NA to enter later.
+template <- sample_index_df %>%
+  mutate(
+    stratum = paste(type, size, sep = "_"),
+    weight  = Nh / nh,   # HT weight for each sampled unit in stratum
+    fpc     = Nh         # finite population correction (for variance)
+  ) %>%
+  select(stratum, type, size, Nh, nh, sampled_index, weight, fpc) %>%
+  mutate(
+    school_name = "",               # <-- fill manually
+    undergrad_enrollment = NA_real_ # <-- fill manually
+  )
+
+write_csv(template, "q1.csv")
+
+```
+ 
+We estimated the total number of U.S. undergraduates using a stratified simple random sample from the College Scorecard. I defined six strata by crossing school type (Public vs. Private, where Private combines non-profit and for-profit) with size (Small, Medium, Large). For each stratum, we constructed a sampling frame directly from the Scorecard search pages filtered to undergraduate-granting programs, then randomly sampled institutions within stratum. we recorded each sampled school’s undergraduate enrollment and used a Horvitz–Thompson estimator for the population total with stratum weights $w_h = N_h/n_h$ and finite population corrections $N_h$. This stratification targets the main drivers of enrollment (size and sector), yielding higher precision than a single SRS.
+
+. Variance and 95% confidence intervals were computed with the
  
  # 2. 
  What fraction of colleges have a major in statistical science? Use your sample to estimate
