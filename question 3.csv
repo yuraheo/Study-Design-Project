@@ -1,22 +1,22 @@
 stratum,type,avg_annual_cost,Nh,nh,sampled_index,weight,fpc,school_name,median_earning
-Public_<=20k,Public,<=20k,1691,18,311,93.94444444444444,1691,,NA
-Public_<=20k,Public,<=20k,1691,18,703,93.94444444444444,1691,,NA
-Public_<=20k,Public,<=20k,1691,18,980,93.94444444444444,1691,,NA
-Public_<=20k,Public,<=20k,1691,18,527,93.94444444444444,1691,,NA
-Public_<=20k,Public,<=20k,1691,18,928,93.94444444444444,1691,,NA
-Public_<=20k,Public,<=20k,1691,18,444,93.94444444444444,1691,,NA
-Public_<=20k,Public,<=20k,1691,18,586,93.94444444444444,1691,,NA
-Public_<=20k,Public,<=20k,1691,18,1078,93.94444444444444,1691,,NA
-Public_<=20k,Public,<=20k,1691,18,186,93.94444444444444,1691,,NA
-Public_<=20k,Public,<=20k,1691,18,862,93.94444444444444,1691,,NA
-Public_<=20k,Public,<=20k,1691,18,1544,93.94444444444444,1691,,NA
-Public_<=20k,Public,<=20k,1691,18,491,93.94444444444444,1691,,NA
-Public_<=20k,Public,<=20k,1691,18,571,93.94444444444444,1691,,NA
-Public_<=20k,Public,<=20k,1691,18,1300,93.94444444444444,1691,,NA
-Public_<=20k,Public,<=20k,1691,18,886,93.94444444444444,1691,,NA
-Public_<=20k,Public,<=20k,1691,18,1201,93.94444444444444,1691,,NA
-Public_<=20k,Public,<=20k,1691,18,984,93.94444444444444,1691,,NA
-Public_<=20k,Public,<=20k,1691,18,853,93.94444444444444,1691,,NA
+Public_<=20k,Public,<=20k,1691,18,311,93.94444444444444,1691,Henderson Community College,36
+Public_<=20k,Public,<=20k,1691,18,703,93.94444444444444,1691,Reading Area Community College,39
+Public_<=20k,Public,<=20k,1691,18,979,93.94444444444444,1691,Mineral County Vocational Technical Center,46
+Public_<=20k,Public,<=20k,1691,18,527,93.94444444444444,1691,East Arkansas Community College,28
+Public_<=20k,Public,<=20k,1691,18,928,93.94444444444444,1691,Thaddeus Stevens College of Technology,55
+Public_<=20k,Public,<=20k,1691,18,444,93.94444444444444,1691,Coppin State University,46
+Public_<=20k,Public,<=20k,1691,18,586,93.94444444444444,1691,Marshalltown Community College,41
+Public_<=20k,Public,<=20k,1691,18,1078,93.94444444444444,1691,Prince George's Community College,48
+Public_<=20k,Public,<=20k,1691,18,186,93.94444444444444,1691,Halifax Community College,32
+Public_<=20k,Public,<=20k,1691,18,862,93.94444444444444,1691,Kirkwood Community College,41
+Public_<=20k,Public,<=20k,1691,18,1544,93.94444444444444,1691,University of Arkansas Community College-Morrilton,35
+Public_<=20k,Public,<=20k,1691,18,491,93.94444444444444,1691,College of Southern Nevada,38
+Public_<=20k,Public,<=20k,1691,18,571,93.94444444444444,1691,York County Community College,45
+Public_<=20k,Public,<=20k,1691,18,1300,93.94444444444444,1691,SUNY Buffalo State University,52
+Public_<=20k,Public,<=20k,1691,18,886,93.94444444444444,1691,Louisiana State University-Eunice,36
+Public_<=20k,Public,<=20k,1691,18,1201,93.94444444444444,1691,Solano Community College,44
+Public_<=20k,Public,<=20k,1691,18,984,93.94444444444444,1691,Minnesota State Community and Technical College,46
+Public_<=20k,Public,<=20k,1691,18,853,93.94444444444444,1691,Tacoma Community College,47
 Public_>20k,Public,>20k,201,2,29,100.5,201,,NA
 Public_>20k,Public,>20k,201,2,150,100.5,201,,NA
 Private_<=20k,Private,<=20k,1510,16,527,94.375,1510,,NA
