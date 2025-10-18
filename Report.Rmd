@@ -18,7 +18,7 @@ library(dplyr)
 library(readr)
 library(stringr)
 library(tibble)
-
+library(survey)
 set.seed(322)
 ```
 
@@ -66,10 +66,32 @@ write_csv(template, "question 1.csv")
 
 ```
  
-We estimated the total number of U.S. undergraduates using a stratified simple random sample from the College Scorecard. I defined six strata by crossing school type (Public vs. Private, where Private combines non-profit and for-profit) with size (Small, Medium, Large). For each stratum, we constructed a sampling frame directly from the Scorecard search pages filtered to undergraduate-granting programs, then randomly sampled institutions within stratum. we recorded each sampled school’s undergraduate enrollment and used a Horvitz–Thompson estimator for the population total with stratum weights $w_h = N_h/n_h$ and finite population corrections $N_h$. This stratification targets the main drivers of enrollment (size and sector), yielding higher precision than a single SRS.
+We estimated the total number of U.S. undergraduates using a stratified simple random sample from the College Scorecard. I defined six strata by crossing school type (Public vs. Private, where Private combines non-profit and for-profit) with size (Small, Medium, Large). For each stratum, we constructed a sampling frame directly from the Scorecard search pages filtered to undergraduate-granting programs, then randomly sampled institutions within stratum. we recorded each sampled school’s undergraduate enrollment and used a Horvitz–Thompson estimator for the population total with stratum weights $w_h = N_h/n_h$ and finite population corrections $N_h$. Because one of the strata (Private–Large) contained only a single sampled institution, a lonely PSU adjustment was applied using the "adjust" method in the survey package. This method inflates the estimated variance slightly to account for strata with only one primary sampling unit (PSU), providing a more conservative and reliable confidence interval.
 
 
+This stratification targets the main drivers of enrollment (size and sector), yielding higher precision than a single SRS.
 
+```{r}
+
+options(survey.lonely.psu = "adjust")
+
+q1 <- read_csv("question 1.csv", show_col_types = FALSE)
+
+design <- svydesign(
+  id = ~1,
+  strata = ~stratum,
+  weights = ~weight,
+  fpc = ~fpc,
+  data = q1
+)
+
+total_est <- svytotal(~undergrad_enrollment, design, na.rm = TRUE)
+total_est
+confint(total_est)
+
+
+```
+The Horvitz–Thompson estimator produced an estimated total undergraduate enrollment of 15,598,354 students, with a standard error (SE) of approximately 1,786,576. The 95% confidence interval for the total enrollment ranges from 12,096,730 to 19,099,978 students.
  
  # 2. 
  What fraction of colleges have a major in statistical science? Use your sample to estimate
