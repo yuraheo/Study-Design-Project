@@ -1,49 +1,49 @@
 stratum,type,size,Nh,nh,sampled_index,weight,fpc,school_name,undergrad_enrollment
-Public_Small,Public,Small,824,22,603,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,388,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,652,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,315,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,419,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,662,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,31,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,565,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,481,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,335,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,367,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,309,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,263,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,134,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,650,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,157,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,233,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,339,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,685,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,107,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,352,37.45454545454545,824,,NA
-Public_Small,Public,Small,824,22,307,37.45454545454545,824,,NA
-Public_Medium,Public,Medium,861,23,749,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,383,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,789,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,787,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,247,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,844,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,4,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,250,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,85,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,330,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,155,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,845,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,149,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,304,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,200,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,398,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,199,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,322,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,301,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,713,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,795,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,39,37.43478260869565,861,,NA
-Public_Medium,Public,Medium,861,23,251,37.43478260869565,861,,NA
+Public_Small,Public,Small,824,22,603,37.45454545454545,824,Southeastern Community College(IA),1529
+Public_Small,Public,Small,824,22,388,37.45454545454545,824,Mesalands Community College,357
+Public_Small,Public,Small,824,22,652,37.45454545454545,824,Tennessee College of Applied Technology Northwest,681
+Public_Small,Public,Small,824,22,315,37.45454545454545,824,Kent State University at Ashtabula,1314
+Public_Small,Public,Small,824,22,419,37.45454545454545,824,Moore Norman Technology Center,363
+Public_Small,Public,Small,824,22,662,37.45454545454545,824,Tennessee College of Applied Technology-Jacksboro,216
+Public_Small,Public,Small,824,22,31,37.45454545454545,824,Academy of Hair Design-Jackson,77
+Public_Small,Public,Small,824,22,565,37.45454545454545,824,Robert Morgan Educational Center and Technical College,868
+Public_Small,Public,Small,824,22,481,37.45454545454545,824,Northwestern Oklahoma State University,1468
+Public_Small,Public,Small,824,22,335,37.45454545454545,824,Lake Technical College,738
+Public_Small,Public,Small,824,22,367,37.45454545454545,824,Mahoning County Career and Technical Center,74
+Public_Small,Public,Small,824,22,309,37.45454545454545,824,John D Rockefeller IV Career Center,14
+Public_Small,Public,Small,824,22,263,37.45454545454545,824,H Councill Trenholm State Community College,1584
+Public_Small,Public,Small,824,22,134,37.45454545454545,824,Colby Community College,837
+Public_Small,Public,Small,824,22,650,37.45454545454545,824,Technical College of the Rockies,142
+Public_Small,Public,Small,824,22,157,37.45454545454545,824,CT Aerotech,34
+Public_Small,Public,Small,824,22,233,37.45454545454545,824,Gadsden Technical College,58
+Public_Small,Public,Small,824,22,339,37.45454545454545,824,Lamar State College-Port Arthur,1455
+Public_Small,Public,Small,824,22,685,37.45454545454545,824,The University of Texas Health Science Center at Houston,460
+Public_Small,Public,Small,824,22,107,37.45454545454545,824,Charlotte Technical College,295
+Public_Small,Public,Small,824,22,352,37.45454545454545,824,Little Big Horn College,339
+Public_Small,Public,Small,824,22,307,37.45454545454545,824,Jefferson County Dubois Area Vocational Technical Practical Nursing Program,25
+Public_Medium,Public,Medium,861,23,749,37.43478260869565,861,University of Memphis,13645
+Public_Medium,Public,Medium,861,23,383,37.43478260869565,861,Massachusetts Bay Community College,3156
+Public_Medium,Public,Medium,861,23,789,37.43478260869565,861,University of Washington-Bothell Campus,5228
+Public_Medium,Public,Medium,861,23,787,37.43478260869565,861,University of Toledo,10244
+Public_Medium,Public,Medium,861,23,247,37.43478260869565,861,Gadsden State Community College,3619
+Public_Medium,Public,Medium,861,23,844,37.43478260869565,861,Weatherford College,3961
+Public_Medium,Public,Medium,861,23,4,37.43478260869565,861,Alabama State University,3322
+Public_Medium,Public,Medium,861,23,250,37.43478260869565,861,GateWay Community College,3473
+Public_Medium,Public,Medium,861,23,85,37.43478260869565,861,Central Maine Community College,2828
+Public_Medium,Public,Medium,861,23,330,37.43478260869565,861,Kean University,10842
+Public_Medium,Public,Medium,861,23,155,37.43478260869565,861,Community College of Rhode Island,11455
+Public_Medium,Public,Medium,861,23,845,37.43478260869565,861,West Chester University of Pennsylvania,14067
+Public_Medium,Public,Medium,861,23,149,37.43478260869565,861,Columbus Technical College,2668
+Public_Medium,Public,Medium,861,23,304,37.43478260869565,861,Indiana University-Northwest,2582
+Public_Medium,Public,Medium,861,23,200,37.43478260869565,861,East Tennessee State University,9807
+Public_Medium,Public,Medium,861,23,398,37.43478260869565,861,Metropolitan State University of Denver,14932
+Public_Medium,Public,Medium,861,23,199,37.43478260869565,861,East Stroudsburg University of Pennsylvania,4611
+Public_Medium,Public,Medium,861,23,322,37.43478260869565,861,Johnson County Community College,10634
+Public_Medium,Public,Medium,861,23,301,37.43478260869565,861,Indiana University of Pennsylvania-Main Campus,6893
+Public_Medium,Public,Medium,861,23,713,37.43478260869565,861,University of Alaska Fairbanks,4027
+Public_Medium,Public,Medium,861,23,795,37.43478260869565,861,University of Wisconsin-Green Bay,6230
+Public_Medium,Public,Medium,861,23,39,37.43478260869565,861,Berkeley City College,4541
+Public_Medium,Public,Medium,861,23,251,37.43478260869565,861,Gateway Technical College,4657
 Public_Large,Public,Large,176,5,125,35.2,176,,NA
 Public_Large,Public,Large,176,5,171,35.2,176,,NA
 Public_Large,Public,Large,176,5,29,35.2,176,,NA
