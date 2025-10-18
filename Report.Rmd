@@ -66,7 +66,7 @@ write_csv(template, "question 1.csv")
 
 ```
  
-We estimated the total number of U.S. undergraduates using a stratified simple random sample from the College Scorecard. I defined six strata by crossing school type (Public vs. Private, where Private combines non-profit and for-profit) with size (Small, Medium, Large). For each stratum, we constructed a sampling frame directly from the Scorecard search pages filtered to undergraduate-granting programs, then randomly sampled institutions within stratum. we recorded each sampled school’s undergraduate enrollment and used a Horvitz–Thompson estimator for the population total with stratum weights $w_h = N_h/n_h$ and finite population corrections $N_h$. Because one of the strata (Private–Large) contained only a single sampled institution, a lonely PSU adjustment was applied using the "adjust" method in the survey package. This method inflates the estimated variance slightly to account for strata with only one primary sampling unit (PSU), providing a more conservative and reliable confidence interval.
+We estimated the total number of U.S. undergraduates using a stratified simple random sample from the College Scorecard. We defined six strata by crossing school type (Public vs. Private, where Private combines non-profit and for-profit) with size (Small, Medium, Large). For each stratum, we constructed a sampling frame directly from the Scorecard search pages filtered to undergraduate-granting programs, then randomly sampled institutions within stratum. we recorded each sampled school’s undergraduate enrollment and used a Horvitz–Thompson estimator for the population total with stratum weights $w_h = N_h/n_h$ and finite population corrections $N_h$. Because one of the strata (Private–Large) contained only a single sampled institution, a lonely PSU adjustment was applied using the "adjust" method in the survey package. This method inflates the estimated variance slightly to account for strata with only one primary sampling unit (PSU), providing a more conservative and reliable confidence interval.
 
 
 This stratification targets the main drivers of enrollment (size and sector), yielding higher precision than a single SRS.
@@ -108,6 +108,40 @@ The Horvitz–Thompson estimator produced an estimated total undergraduate enrol
  
  
  - Stratified SRS for acceptance rate 4 categories
+```{r}
+strata_plan3 <-  tribble(
+  ~type,        ~accept_rate,   ~Nh,   ~nh,
+  "Public",     "0-50%",       57,  1,
+  "Public",     "50-75%",       145,  2,
+  "Public",     "75-100%",      1665,  18,
+  "Private",    "0-50%",       249,  3,
+  "Private",    "50-75%",       393,  4,
+  "Private",    "75-100%",      2903, 32
+) 
+
+sample_index_df3 <- strata_plan3 %>%
+  rowwise() %>%
+  mutate(sampled_index = list(sample.int(Nh, size = nh, replace = FALSE))) %>%
+  tidyr::unnest(sampled_index) %>%
+  ungroup()
+
+# Create template for data collection
+template3 <- sample_index_df3 %>%
+  mutate(
+    stratum = paste(type, accept_rate, sep = "_"),
+    weight  = Nh / nh,  # HT weight
+    fpc     = Nh
+  ) %>%
+  select(stratum, type, accept_rate, Nh, nh, sampled_index, weight, fpc) %>%
+  mutate(
+    school_name = "",
+    median_earning = NA_real_
+  )
+
+write_csv(template3, "question 3.csv")
+
+```
+ 
 
  
  
