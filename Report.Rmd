@@ -59,7 +59,7 @@ template <- sample_index_df %>%
   select(stratum, type, size, Nh, nh, sampled_index, weight, fpc) %>%
   mutate(
     school_name = "",               # <-- fill manually
-    undergrad_enrollment = NA_real_ # <-- fill manually
+    undergrad_enrollment = NA_real_, # <-- fill manually
   )
 
 write_csv(template, "q1.csv")
