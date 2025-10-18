@@ -107,16 +107,14 @@ The Horvitz–Thompson estimator produced an estimated total undergraduate enrol
  schools (combine for profit and not for profit private schools)?
  
  
- - Stratified SRS for acceptance rate 4 categories
+ - Stratified SRS for average cost
 ```{r}
 strata_plan3 <-  tribble(
-  ~type,        ~accept_rate,   ~Nh,   ~nh,
-  "Public",     "0-50%",       57,  1,
-  "Public",     "50-75%",       145,  2,
-  "Public",     "75-100%",      1665,  18,
-  "Private",    "0-50%",       249,  3,
-  "Private",    "50-75%",       393,  4,
-  "Private",    "75-100%",      2903, 32
+  ~type,        ~avg_annual_cost,   ~Nh,   ~nh,
+  "Public",     "<=20k",       1691,  18,
+  "Public",     ">20k",       201,  2,
+  "Private",    "<=20k",       1510,  16,
+  "Private",    ">20k",       2144,  24,
 ) 
 
 sample_index_df3 <- strata_plan3 %>%
@@ -128,11 +126,11 @@ sample_index_df3 <- strata_plan3 %>%
 # Create template for data collection
 template3 <- sample_index_df3 %>%
   mutate(
-    stratum = paste(type, accept_rate, sep = "_"),
+    stratum = paste(type, avg_annual_cost, sep = "_"),
     weight  = Nh / nh,  # HT weight
     fpc     = Nh
   ) %>%
-  select(stratum, type, accept_rate, Nh, nh, sampled_index, weight, fpc) %>%
+  select(stratum, type, avg_annual_cost, Nh, nh, sampled_index, weight, fpc) %>%
   mutate(
     school_name = "",
     median_earning = NA_real_
