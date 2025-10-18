@@ -34,29 +34,30 @@ Private_Small,Private,Small,3130,35,1041,89.42857142857143,3130,,NA
 Private_Small,Private,Small,3130,35,177,89.42857142857143,3130,,NA
 Private_Small,Private,Small,3130,35,2711,89.42857142857143,3130,,NA
 Private_Small,Private,Small,3130,35,1655,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,12,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,1740,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,350,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,2510,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,3114,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,2448,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,1370,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,1071,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,523,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,3019,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,2929,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,486,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,3006,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,1421,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,1069,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,1684,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,2761,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,1712,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,2519,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,473,89.42857142857143,3130,,NA
-Private_Small,Private,Small,3130,35,2220,89.42857142857143,3130,,NA
-Private_Medium,Private,Medium,381,4,100,95.25,381,,NA
-Private_Medium,Private,Medium,381,4,192,95.25,381,,NA
-Private_Medium,Private,Medium,381,4,196,95.25,381,,NA
-Private_Medium,Private,Medium,381,4,181,95.25,381,,NA
-Private_Large,Private,Large,23,1,12,23,23,,NA
+Private_Small,Private,Small,3130,35,12,89.42857142857143,3130,Academy for Salon Professionals,140
+Private_Small,Private,Small,3130,35,1740,89.42857142857143,3130,Millennia Atlantic University,104
+Private_Small,Private,Small,3130,35,350,89.42857142857143,3130,Best Care College, 46
+Private_Small,Private,Small,3130,35,2510,89.42857142857143,3130,South University-Tampa,390
+Private_Small,Private,Small,3130,35,3114,89.42857142857143,3130,Yeshivas Be'er Yitzchok,52
+Private_Small,Private,Small,3130,35,2448,89.42857142857143,3130,Santa Ana Beauty College,74
+Private_Small,Private,Small,3130,35,1370,89.42857142857143,3130,International Salon and Spa Academy,307
+Private_Small,Private,Small,3130,35,1071,89.42857142857143,3130,Florida Career College-Hialeah
+,185
+Private_Small,Private,Small,3130,35,523,89.42857142857143,3130,Career Technical Institute,370
+Private_Small,Private,Small,3130,35,3019,89.42857142857143,3130,West Coast University-Miami,900
+Private_Small,Private,Small,3130,35,2929,89.42857142857143,3130,University of the Ozarks,753
+Private_Small,Private,Small,3130,35,486,89.42857142857143,3130,California Institute of the Arts, 881
+Private_Small,Private,Small,3130,35,3006,89.42857142857143,3130,Waynes College of Beauty,46
+Private_Small,Private,Small,3130,35,1421,89.42857142857143,3130,John Wesley International Barber and Beauty College,61
+Private_Small,Private,Small,3130,35,1069,89.42857142857143,3130,Florida School of Traditional Midwifery,73
+Private_Small,Private,Small,3130,35,1684,89.42857142857143,3130,Mesivta of Eastern Parkway-Yeshiva Zichron Meilech,41
+Private_Small,Private,Small,3130,35,2761,89.42857142857143,3130,Tigi Hairdressing Academy-Colorado Springs,129
+Private_Small,Private,Small,3130,35,1712,89.42857142857143,3130,Midland University,1191
+Private_Small,Private,Small,3130,35,2519,89.42857142857143,3130,Southeastern College-Columbia,248
+Private_Small,Private,Small,3130,35,473,89.42857142857143,3130,California Career College,195
+Private_Small,Private,Small,3130,35,2220,89.42857142857143,3130,Praxis Institute,440
+Private_Medium,Private,Medium,381,4,100,95.25,381,Elmhurst University,2954
+Private_Medium,Private,Medium,381,4,192,95.25,381,Middlebury College,2785
+Private_Medium,Private,Medium,381,4,196,95.25,381,Molloy College,3185
+Private_Medium,Private,Medium,381,4,181,95.25,381,Marquette University,7238
+Private_Large,Private,Large,23,1,12,23,23,Grand Canyon University,68619
