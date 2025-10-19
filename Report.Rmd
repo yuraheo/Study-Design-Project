@@ -141,7 +141,41 @@ write_csv(template3, "question 3.csv")
 ```
  
 
- 
+```{r}
+options(survey.lonely.psu = "adjust")
+
+q3 <- read_csv("question 3.csv", show_col_types = FALSE)
+
+design_q3 <- svydesign(
+  id     = ~1,
+  strata = ~stratum,
+  weights= ~weight,
+  fpc    = ~fpc,
+  data   = q3
+)
+
+# 3) Estimate average median earnings for Public schools
+mean_public <- svymean(~median_earning,
+                       subset(design_q3, type == "Public"),
+                       na.rm = TRUE)
+
+# 4) Estimate average median earnings for Private schools
+mean_private <- svymean(~median_earning,
+                        subset(design_q3, type == "Private"),
+                        na.rm = TRUE)
+
+# 5) Display results with 95% confidence intervals
+mean_public
+confint(mean_public)
+
+mean_private
+confint(mean_private)
+```
+ The Horvitz–Thompson estimator produced an estimated average median earning of $43,969 among alumni from public schools, with a standard error (SE) of approximately $1,695.
+The corresponding 95% confidence interval ranges from $40,648 to $47,290.
+
+For private schools, the estimated average median earning was $40,343, with a standard error (SE) of approximately $2,703.
+The 95% confidence interval for private-school alumni median earnings ranges from $35,046 to $45,640.
  
  # 4. 
   Answer one other question that interests you from the data that you could collect from the
