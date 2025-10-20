@@ -63,8 +63,7 @@ write_csv(template, "question 1.csv")
 
 We estimated the total number of U.S. undergraduates using a stratified simple random sample from the College Scorecard. We defined six strata by crossing school type (Public vs. Private, where Private combines non-profit and for-profit) with size (Small, Medium, Large). For each stratum, we constructed a sampling frame directly from the Scorecard search pages filtered to undergraduate-granting programs, then randomly sampled institutions within stratum. We recorded each sampled school’s undergraduate enrollment and used a Horvitz–Thompson estimator for the population total with stratum weights $w_h = N_h/n_h$ and finite population corrections $N_h$. Because one of the strata (Private–Large) contained only a single sampled institution, a lonely PSU adjustment was applied using the "adjust" method in the survey package. This method inflates the estimated variance slightly to account for strata with only one primary sampling unit (PSU), providing a more conservative and reliable confidence interval.
 
-This stratification targets the main drivers of enrollment (size and sector), yielding higher precision than a single SRS.
-
+Stratifying by both sector and size is reasonable because these are key determinants of enrollment variation across U.S. colleges. Public and private institutions differ substantially in average enrollment, and within each sector, small, medium, and large schools have relatively homogeneous student counts. Using six strata therefore reduces variability within each group while capturing meaningful differences across groups. 
 ```{r}
 
 options(survey.lonely.psu = "adjust")
@@ -155,7 +154,6 @@ The Horvitz–Thompson estimator produced an estimated 10.4% of colleges in the 
 
 What is the average of the median earnings among alumni from public schools? From private schools (combine for profit and not for profit private schools)?
 
--   Stratified SRS for average cost
 
 ```{r}
 strata_plan3 <-  tribble(
@@ -202,23 +200,27 @@ design_q3 <- svydesign(
   data   = q3
 )
 
-# 3) Estimate average median earnings for Public schools
+# Estimate average median earnings for Public schools
 mean_public <- svymean(~median_earning,
                        subset(design_q3, type == "Public"),
                        na.rm = TRUE)
 
-# 4) Estimate average median earnings for Private schools
+# Estimate average median earnings for Private schools
 mean_private <- svymean(~median_earning,
                         subset(design_q3, type == "Private"),
                         na.rm = TRUE)
 
-# 5) Display results with 95% confidence intervals
+# Display results with 95% confidence intervals
 mean_public
 confint(mean_public)
 
 mean_private
 confint(mean_private)
 ```
+
+Using a stratified simple random sample with proportional allocation, we estimated the average of the median alumni earnings for public and private institutions separately.
+We stratified colleges by average annual cost because tuition and fees are closely related to institutional characteristics that likely affect alumni earnings, such as available resources, program quality, and student demographics.
+By dividing schools into low-cost (≤ $20,000) and high-cost (> $20,000) groups, we ensured that both more affordable and more expensive institutions were proportionally represented in the sample.
 
 The Horvitz–Thompson estimator produced an estimated average median earning of \$43,969 among alumni from public schools, with a standard error (SE) of approximately \$1,695. The corresponding 95% confidence interval ranges from \$40,648 to \$47,290.
 
