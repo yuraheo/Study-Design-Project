@@ -1,0 +1,62 @@
+stratum,type,size,Nh,nh,sampled_index,weight,fpc,school_name,statistics_major
+Public_Small,Public,Small,824,9,134,91.55555555555556,824,Colby Community College,0
+Public_Small,Public,Small,824,9,419,91.55555555555556,824,Moore Norman Technology Center,0
+Public_Small,Public,Small,824,9,652,91.55555555555556,824,Tennessee College of Applied Technology Northwest,0
+Public_Small,Public,Small,824,9,565,91.55555555555556,824,Robert Morgan Educational Center and Technical College,0
+Public_Small,Public,Small,824,9,335,91.55555555555556,824,Lake Technical College,0
+Public_Small,Public,Small,824,9,367,91.55555555555556,824,Mahoning County Career and Technical Center,0
+Public_Small,Public,Small,824,9,352,91.55555555555556,824,Little Big Horn College,0
+Public_Small,Public,Small,824,9,157,91.55555555555556,824,CT Aerotech,0
+Public_Small,Public,Small,824,9,107,91.55555555555556,824,Charlotte Technical College,0
+Public_Medium,Public,Medium,861,10,251,86.1,861,Gateway Technical College,0
+Public_Medium,Public,Medium,861,10,304,86.1,861,Indiana University-Northwest,0
+Public_Medium,Public,Medium,861,10,247,86.1,861,Gadsden State Community College,0
+Public_Medium,Public,Medium,861,10,789,86.1,861,University of Washington-Bothell Campus,0
+Public_Medium,Public,Medium,861,10,250,86.1,861,GateWay Community College,0
+Public_Medium,Public,Medium,861,10,330,86.1,861,Kean University,0
+Public_Medium,Public,Medium,861,10,155,86.1,861,Community College of Rhode Island,0
+Public_Medium,Public,Medium,861,10,795,86.1,861,University of Wisconsin-Green Bay,0
+Public_Medium,Public,Medium,861,10,398,86.1,861,Metropolitan State University of Denver,1
+Public_Medium,Public,Medium,861,10,713,86.1,861,University of Alaska Fairbanks,1
+Public_Large,Public,Large,176,2,62,88,176,Louisiana State University and Agricultural & Mechanical College,1
+Public_Large,Public,Large,176,2,171,88,176,Virginia Polytechnic Institute and State University,1
+Private_Small,Private,Small,3130,35,2122,89.42857142857143,3130,Paul Mitchell the School-San Jose,0
+Private_Small,Private,Small,3130,35,244,89.42857142857143,3130,Avalon Institute-Aurora,0
+Private_Small,Private,Small,3130,35,2199,89.42857142857143,3130,PJ's College of Cosmetology-Glasgow,0
+Private_Small,Private,Small,3130,35,2173,89.42857142857143,3130,Pima Medical Institute-Aurora,0
+Private_Small,Private,Small,3130,35,1474,89.42857142857143,3130,Kuyper College,0
+Private_Small,Private,Small,3130,35,3074,89.42857142857143,3130,World Mission University,0
+Private_Small,Private,Small,3130,35,836,89.42857142857143,3130,Detroit Business Institute-Downriver,0
+Private_Small,Private,Small,3130,35,996,89.42857142857143,3130,Empire Beauty School-Savannah,0
+Private_Small,Private,Small,3130,35,258,89.42857142857143,3130,Academy of Cosmetology,0
+Private_Small,Private,Small,3130,35,2982,89.42857142857143,3130,Voorhees University,0
+Private_Small,Private,Small,3130,35,1041,89.42857142857143,3130,Evolve Beauty Academy,0
+Private_Small,Private,Small,3130,35,177,89.42857142857143,3130,Arizona College of Nursing-Salt Lake City,0
+Private_Small,Private,Small,3130,35,2711,89.42857142857143,3130,The Master's University and Seminary,0
+Private_Small,Private,Small,3130,35,1655,89.42857142857143,3130,McKendree University,0
+Private_Small,Private,Small,3130,35,12,89.42857142857143,3130,Academy for Salon Professionals,0
+Private_Small,Private,Small,3130,35,1740,89.42857142857143,3130,Millennia Atlantic University,0
+Private_Small,Private,Small,3130,35,350,89.42857142857143,3130,Best Care College,0
+Private_Small,Private,Small,3130,35,2510,89.42857142857143,3130,South University-Tampa,0
+Private_Small,Private,Small,3130,35,3114,89.42857142857143,3130,Yeshivas Be'er Yitzchok,0
+Private_Small,Private,Small,3130,35,2448,89.42857142857143,3130,Santa Ana Beauty College,0
+Private_Small,Private,Small,3130,35,1370,89.42857142857143,3130,International Salon and Spa Academy,0
+Private_Small,Private,Small,3130,35,1071,89.42857142857143,3130,Florida Career College-Hialeah,0
+Private_Small,Private,Small,3130,35,523,89.42857142857143,3130,Career Technical Institute,0
+Private_Small,Private,Small,3130,35,3019,89.42857142857143,3130,West Coast University-Miami,0
+Private_Small,Private,Small,3130,35,2929,89.42857142857143,3130,University of the Ozarks,0
+Private_Small,Private,Small,3130,35,486,89.42857142857143,3130,California Institute of the Arts,0
+Private_Small,Private,Small,3130,35,3006,89.42857142857143,3130,Waynes College of Beauty,0
+Private_Small,Private,Small,3130,35,1421,89.42857142857143,3130,John Wesley International Barber and Beauty College,0
+Private_Small,Private,Small,3130,35,1069,89.42857142857143,3130,Florida School of Traditional Midwifery,0
+Private_Small,Private,Small,3130,35,1684,89.42857142857143,3130,Mesivta of Eastern Parkway-Yeshiva Zichron Meilech,0
+Private_Small,Private,Small,3130,35,2761,89.42857142857143,3130,Tigi Hairdressing Academy-Colorado Springs,0
+Private_Small,Private,Small,3130,35,1712,89.42857142857143,3130,Midland University,0
+Private_Small,Private,Small,3130,35,2519,89.42857142857143,3130,Southeastern College-Columbia,0
+Private_Small,Private,Small,3130,35,473,89.42857142857143,3130,California Career College,0
+Private_Small,Private,Small,3130,35,2220,89.42857142857143,3130,Praxis Institute,0
+Private_Medium,Private,Medium,381,4,100,95.25,381,Elmhurst University,0
+Private_Medium,Private,Medium,381,4,192,95.25,381,Middlebury College,1
+Private_Medium,Private,Medium,381,4,196,95.25,381,Molloy College,0
+Private_Medium,Private,Medium,381,4,181,95.25,381,Marquette University,1
+Private_Large,Private,Large,23,1,12,23,23,Grand Canyon University,1

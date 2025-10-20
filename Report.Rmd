@@ -22,15 +22,10 @@ library(survey)
 set.seed(322)
 ```
 
+# 1.
 
-# 1. 
-What is an estimate of the total number of undergraduate students enrolled in colleges?
- Design your survey with the goal of answering this question most accurately.
- 
- - Stratified SRS of colleges
- - Strata based school size and public/private
- - 6 strata 
- - sort by name
+What is an estimate of the total number of undergraduate students enrolled in colleges? Design your survey with the goal of answering this question most accurately.
+
 ```{r}
 
 strata_plan <- tribble(
@@ -65,9 +60,8 @@ template <- sample_index_df %>%
 write_csv(template, "question 1.csv")
 
 ```
- 
-We estimated the total number of U.S. undergraduates using a stratified simple random sample from the College Scorecard. We defined six strata by crossing school type (Public vs. Private, where Private combines non-profit and for-profit) with size (Small, Medium, Large). For each stratum, we constructed a sampling frame directly from the Scorecard search pages filtered to undergraduate-granting programs, then randomly sampled institutions within stratum. we recorded each sampled school’s undergraduate enrollment and used a Horvitz–Thompson estimator for the population total with stratum weights $w_h = N_h/n_h$ and finite population corrections $N_h$. Because one of the strata (Private–Large) contained only a single sampled institution, a lonely PSU adjustment was applied using the "adjust" method in the survey package. This method inflates the estimated variance slightly to account for strata with only one primary sampling unit (PSU), providing a more conservative and reliable confidence interval.
 
+We estimated the total number of U.S. undergraduates using a stratified simple random sample from the College Scorecard. We defined six strata by crossing school type (Public vs. Private, where Private combines non-profit and for-profit) with size (Small, Medium, Large). For each stratum, we constructed a sampling frame directly from the Scorecard search pages filtered to undergraduate-granting programs, then randomly sampled institutions within stratum. We recorded each sampled school’s undergraduate enrollment and used a Horvitz–Thompson estimator for the population total with stratum weights $w_h = N_h/n_h$ and finite population corrections $N_h$. Because one of the strata (Private–Large) contained only a single sampled institution, a lonely PSU adjustment was applied using the "adjust" method in the survey package. This method inflates the estimated variance slightly to account for strata with only one primary sampling unit (PSU), providing a more conservative and reliable confidence interval.
 
 This stratification targets the main drivers of enrollment (size and sector), yielding higher precision than a single SRS.
 
@@ -91,23 +85,78 @@ confint(total_est)
 
 
 ```
+
 The Horvitz–Thompson estimator produced an estimated total undergraduate enrollment of 15,598,354 students, with a standard error (SE) of approximately 1,786,576. The 95% confidence interval for the total enrollment ranges from 12,096,730 to 19,099,978 students.
- 
- # 2. 
- What fraction of colleges have a major in statistical science? Use your sample to estimate
- this fraction; do not get the answer by filtering the schools.
- 
- - Stratified SRS of colleges
- - Strata based school size and public/private
- - 6 strata 
- - sort by name
- 
- # 3. 
- What is the average of the median earnings among alumni from public schools? From private
- schools (combine for profit and not for profit private schools)?
- 
- 
- - Stratified SRS for average cost
+
+# **2**.
+
+What fraction of colleges have a major in statistical science? Use your sample to estimate this fraction; do not get the answer by filtering the schools.
+
+```{r}
+
+strata_plan2 <- tribble(
+  ~type,    ~size,   ~Nh,  ~nh,
+  "Public", "Small",   824,  9,
+  "Public", "Medium",  861, 10,
+  "Public", "Large",   176,  2,
+  "Private","Small",  3132, 35,
+  "Private","Medium",  381,  4,
+  "Private","Large",    23,  1
+) # based on proportional allocation, sums to 60
+
+sample_index_df2 <- strata_plan2 |>
+  rowwise() |>
+  mutate(sampled_index = list(sample.int(Nh, size = nh, replace = FALSE))) |>
+  tidyr::unnest(sampled_index) |>
+  ungroup()
+
+template2 <- sample_index_df2 |>
+  mutate(
+    stratum = paste(type, size, sep = "_"),
+    weight  = Nh / nh,   
+    fpc     = Nh         
+  ) |>
+  select(stratum, type, size, Nh, nh, sampled_index, weight, fpc) |>
+  mutate(
+    school_name = "",               # <-- fill manually
+    statistics_major = NA_real_, # <-- fill manually
+  )
+
+write_csv(template2, "question 2.csv")
+
+```
+
+```{r}
+options(survey.lonely.psu = "adjust")
+
+q2 <- read_csv("question 2.csv", show_col_types = FALSE)
+
+design_q2 <- svydesign(
+  id = ~1,
+  strata = ~stratum,
+  weights = ~weight,
+  fpc = ~fpc,
+  data = q2
+)
+
+fraction_est <- svymean(~statistics_major, design_q2, na.rm = TRUE)
+fraction_est
+confint(fraction_est)
+
+```
+
+To estimate the fraction of colleges in the United States that offer a major in statistical science, we chose used the same stratified simple random sample from the College Scorecard, using the same six strata of school type (Public and Private) with size (Small, Medium, Large), believing that public vs. private colleges, and small vs. large colleges may offer very different likelihoods of offering a statistics major while having similar academic offerings within strata.
+
+After confirming that the $N_h$ for each stratum were about the same as Question 1 (even after adding Graduate programs to our selection) and therefore the proportional allocation to each $n_h$ would be the same, we used the same random sample of schools from each stratum, recording whether each sampled school offered a major in statistical science (1 if yes, 0 if no). Again, we used a Horvitz–Thompson estimator for the population mean with stratum weights $w_h = N_h/n_h$ and finite population corrections $N_h$, also adjusting for the Private–Large strata that contained only a single sampled institution.
+
+The Horvitz–Thompson estimator produced an estimated 10.4% of colleges in the United States that offer a statistics major, with a standard error (SE) of approximately 2.95%. The 95% confidence interval for the total number of colleges offering a statistics major ranges from 4.62% to 16.2%.
+
+# **3.**
+
+What is the average of the median earnings among alumni from public schools? From private schools (combine for profit and not for profit private schools)?
+
+-   Stratified SRS for average cost
+
 ```{r}
 strata_plan3 <-  tribble(
   ~type,        ~avg_annual_cost,   ~Nh,   ~nh,
@@ -139,7 +188,6 @@ template3 <- sample_index_df3 %>%
 write_csv(template3, "question 3.csv")
 
 ```
- 
 
 ```{r}
 options(survey.lonely.psu = "adjust")
@@ -171,15 +219,11 @@ confint(mean_public)
 mean_private
 confint(mean_private)
 ```
- The Horvitz–Thompson estimator produced an estimated average median earning of $43,969 among alumni from public schools, with a standard error (SE) of approximately $1,695.
-The corresponding 95% confidence interval ranges from $40,648 to $47,290.
 
-For private schools, the estimated average median earning was $40,343, with a standard error (SE) of approximately $2,703.
-The 95% confidence interval for private-school alumni median earnings ranges from $35,046 to $45,640.
- 
- # 4. 
-  Answer one other question that interests you from the data that you could collect from the
- website.
- 
- 
- NOrth Carolina undergrad students: average annual cost proportional to student faculty ratio
+The Horvitz–Thompson estimator produced an estimated average median earning of \$43,969 among alumni from public schools, with a standard error (SE) of approximately \$1,695. The corresponding 95% confidence interval ranges from \$40,648 to \$47,290.
+
+For private schools, the estimated average median earning was \$40,343, with a standard error (SE) of approximately \$2,703. The 95% confidence interval for private-school alumni median earnings ranges from \$35,046 to \$45,640.
+
+\# 4. Answer one other question that interests you from the data that you could collect from the website.
+
+NOrth Carolina undergrad students: average annual cost proportional to student faculty ratio
