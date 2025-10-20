@@ -24,7 +24,7 @@ set.seed(322)
 
 # 1.
 
-What is an estimate of the total number of undergraduate students enrolled in colleges? Design your survey with the goal of answering this question most accurately.
+**What is an estimate of the total number of undergraduate students enrolled in colleges? Design your survey with the goal of answering this question most accurately.**
 
 ```{r}
 
@@ -90,7 +90,7 @@ The Horvitz–Thompson estimator produced an estimated total undergraduate enrol
 
 # **2**.
 
-What fraction of colleges have a major in statistical science? Use your sample to estimate this fraction; do not get the answer by filtering the schools.
+**What fraction of colleges have a major in statistical science? Use your sample to estimate this fraction; do not get the answer by filtering the schools.**
 
 ```{r}
 
@@ -153,9 +153,7 @@ The Horvitz–Thompson estimator produced an estimated 10.4% of colleges in the 
 
 # **3.**
 
-What is the average of the median earnings among alumni from public schools? From private schools (combine for profit and not for profit private schools)?
-
--   Stratified SRS for average cost
+**What is the average of the median earnings among alumni from public schools? From private schools (combine for profit and not for profit private schools)?**
 
 ```{r}
 strata_plan3 <-  tribble(
@@ -224,6 +222,47 @@ The Horvitz–Thompson estimator produced an estimated average median earning of
 
 For private schools, the estimated average median earning was \$40,343, with a standard error (SE) of approximately \$2,703. The 95% confidence interval for private-school alumni median earnings ranges from \$35,046 to \$45,640.
 
-\# 4. Answer one other question that interests you from the data that you could collect from the website.
+# 4.
 
-NOrth Carolina undergrad students: average annual cost proportional to student faculty ratio
+**Answer one other question that interests you from the data that you could collect from the website.**
+
+```{r}
+
+q4 <- read.csv("nc.csv")
+
+
+```
+
+```{r}
+
+q4 <- q4 |>
+  select(INSTNM, STUFACR, COSTT4_A) |>
+  filter(!is.na(STUFACR), STUFACR > 0,
+         !is.na(COSTT4_A), COSTT4_A > 0) |>
+  mutate(invSTUFACR = 1 / STUFACR)
+
+```
+
+```{r}
+set.seed(440)
+
+pps <- q4 |>
+  sample_n(size = 50, weight = invSTUFACR, replace = FALSE)
+
+N_sum   <- sum(q4$invSTUFACR)
+n_draws <- 50
+q4 <- q4 |>
+  mutate(pi_i = (invSTUFACR / N_sum) * n_draws)
+
+pps$pi_i <- q4$pi_i[ match(pps$INSTNM, q4$INSTNM) ]
+
+design_pps <- svydesign(id = ~1, probs = ~pi_i, data = pps)
+svymean(~COSTT4_A, design_pps)
+confint(svymean(~COSTT4_A, design_pps))
+```
+
+When looking at the website, we were also interested in whether the average annual cost is proportional to faculty-student ratio. We expected a positive relationship between the two variables, as our belief is that the greater the faculty-student ratio, the more expensive a school is as they dedicate more resources and time to each student, so we inverted the original student-faculty ratio to obtain a positively correlated faculty-student ratio with average annual cost.
+
+To do this, we chose to use a one-stage PPS sampling to sample 50 colleges in the United States, where the measure of size $X_i$ is the faculty-student ratio to measure $Y$, the average annual cost, since we wanted to make it likely that schools with greater ratios are more likely to be selected. Therefore, our weight was $π_i = n * X_i/\sum(X_j)$ where n = 50 and $X_i$ was the faculty-student ratio for institution $i$.
+
+The Horvitz–Thompson estimator produced an average annual cost of \$29,841, with a standard error (SE) of approximately \$2707. The 95% confidence interval for average annual cost ranges from \$24,535.52 to \$35,146.72.
