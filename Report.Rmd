@@ -232,7 +232,6 @@ For private schools, the estimated average median earning was \$40,343, with a s
 
 q4 <- read.csv("nc.csv")
 
-
 ```
 
 ```{r}
