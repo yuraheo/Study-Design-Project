@@ -167,7 +167,7 @@ colleges <- read.csv("colleges.csv")
 ```{r}
 
 colleges <- colleges |>
-  select(INSTNM, PCTPELL) 
+  select(INSTNM, MD_EARN_WNE_P10, PCTPELL) 
 
 data <- left_join(
   survey_main,
@@ -178,10 +178,9 @@ data <- left_join(
 datas <- data |>
   left_join(colleges, by = c("school_name" = "INSTNM")) |>
   rename(
-    pell = PCTPELL
-  ) |>
-  mutate(
-    median_earnings = NA_real_)
+    pell = PCTPELL,
+    median_earnings = MD_EARN_WNE_P10
+  )
 
 write_csv(datas, "datas.csv")
 
