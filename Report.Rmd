@@ -138,6 +138,10 @@ design_q2 <- svydesign(
   weights = ~weight,
   fpc = ~fpc,
   data = q2
+  
+  |>
+  mutate(invSTUFACR = 1 / STUFACR)
+
 )
 
 fraction_est <- svymean(~statistics_major, design_q2, na.rm = TRUE)
@@ -156,6 +160,14 @@ The Horvitz–Thompson estimator produced an estimated 10.4% of colleges in the 
 
 survey_main <- read_csv("question 1.csv")
 stats_major <- read_csv("question 2.csv")
+colleges <- read.csv("colleges.csv")
+
+```
+
+```{r}
+
+colleges <- colleges |>
+  select(INSTNM, STUFACR, COSTT4_A) 
 
 data <- left_join(
   survey_main,
@@ -163,14 +175,15 @@ data <- left_join(
   by = "school_name"
 )
 
-data <- data |>
-  mutate(
-    median_earnings = NA_real_,    
-    annual_cost = NA_real_,            
-    fs_ratio = NA_real_      
+datas <- data |>
+  left_join(colleges, by = c("school_name" = "INSTNM")) |>
+  rename(
+    fs_ratio = STUFACR,                 
+    annual_cost = COSTT4_A
   )
 
-write_csv(data, "data.csv")
+write_csv(data, "datas.csv")
+
 ```
 
 # **3.**
@@ -249,12 +262,6 @@ For private schools, the estimated average median earning was \$40,343, with a s
 # 4.
 
 **Answer one other question that interests you from the data that you could collect from the website.**
-
-```{r}
-
-q4 <- read.csv("nc.csv")
-
-```
 
 ```{r}
 
