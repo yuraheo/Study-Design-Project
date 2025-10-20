@@ -14,6 +14,7 @@ execute:
 ---
 
 ```{r}
+library(tidyverse)
 library(dplyr)
 library(readr)
 library(stringr)
@@ -150,6 +151,27 @@ To estimate the fraction of colleges in the United States that offer a major in 
 After confirming that the $N_h$ for each stratum were about the same as Question 1 (even after adding Graduate programs to our selection) and therefore the proportional allocation to each $n_h$ would be the same, we used the same random sample of schools from each stratum, recording whether each sampled school offered a major in statistical science (1 if yes, 0 if no). Again, we used a Horvitz–Thompson estimator for the population mean with stratum weights $w_h = N_h/n_h$ and finite population corrections $N_h$, also adjusting for the Private–Large strata that contained only a single sampled institution.
 
 The Horvitz–Thompson estimator produced an estimated 10.4% of colleges in the United States that offer a statistics major, with a standard error (SE) of approximately 2.95%. The 95% confidence interval for the total number of colleges offering a statistics major ranges from 4.62% to 16.2%.
+
+```{r}
+
+survey_main <- read_csv("question 1.csv")
+stats_major <- read_csv("question 2.csv")
+
+data <- left_join(
+  survey_main,
+  stats_major |> select(school_name, statistics_major),
+  by = "school_name"
+)
+
+data <- data |>
+  mutate(
+    median_earnings = NA_real_,    
+    annual_cost = NA_real_,            
+    fs_ratio = NA_real_      
+  )
+
+write_csv(data, "data.csv")
+```
 
 # **3.**
 

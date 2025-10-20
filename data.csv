@@ -1,0 +1,62 @@
+stratum,type,size,Nh,nh,sampled_index,weight,fpc,school_name,undergrad_enrollment,statistics_major,median_earnings,annual_cost,fs_ratio
+Public_Small,Public,Small,824,9,134,91.55555555555556,824,Colby Community College,837,0,NA,NA,NA
+Public_Small,Public,Small,824,9,419,91.55555555555556,824,Moore Norman Technology Center,363,0,NA,NA,NA
+Public_Small,Public,Small,824,9,652,91.55555555555556,824,Tennessee College of Applied Technology Northwest,681,0,NA,NA,NA
+Public_Small,Public,Small,824,9,565,91.55555555555556,824,Robert Morgan Educational Center and Technical College,868,0,NA,NA,NA
+Public_Small,Public,Small,824,9,335,91.55555555555556,824,Lake Technical College,738,0,NA,NA,NA
+Public_Small,Public,Small,824,9,367,91.55555555555556,824,Mahoning County Career and Technical Center,74,0,NA,NA,NA
+Public_Small,Public,Small,824,9,352,91.55555555555556,824,Little Big Horn College,339,0,NA,NA,NA
+Public_Small,Public,Small,824,9,157,91.55555555555556,824,CT Aerotech,34,0,NA,NA,NA
+Public_Small,Public,Small,824,9,107,91.55555555555556,824,Charlotte Technical College,295,0,NA,NA,NA
+Public_Medium,Public,Medium,861,10,251,86.1,861,Gateway Technical College,4657,0,NA,NA,NA
+Public_Medium,Public,Medium,861,10,304,86.1,861,Indiana University-Northwest,2582,0,NA,NA,NA
+Public_Medium,Public,Medium,861,10,247,86.1,861,Gadsden State Community College,3619,0,NA,NA,NA
+Public_Medium,Public,Medium,861,10,789,86.1,861,University of Washington-Bothell Campus,5228,0,NA,NA,NA
+Public_Medium,Public,Medium,861,10,250,86.1,861,GateWay Community College,3473,0,NA,NA,NA
+Public_Medium,Public,Medium,861,10,330,86.1,861,Kean University,10842,0,NA,NA,NA
+Public_Medium,Public,Medium,861,10,155,86.1,861,Community College of Rhode Island,11455,0,NA,NA,NA
+Public_Medium,Public,Medium,861,10,795,86.1,861,University of Wisconsin-Green Bay,6230,0,NA,NA,NA
+Public_Medium,Public,Medium,861,10,398,86.1,861,Metropolitan State University of Denver,14932,1,NA,NA,NA
+Public_Medium,Public,Medium,861,10,713,86.1,861,University of Alaska Fairbanks,4027,1,NA,NA,NA
+Public_Large,Public,Large,176,2,62,88,176,Louisiana State University and Agricultural & Mechanical College,29207,1,NA,NA,NA
+Public_Large,Public,Large,176,2,171,88,176,Virginia Polytechnic Institute and State University,30435,1,NA,NA,NA
+Private_Small,Private,Small,3130,35,2122,89.42857142857143,3130,Paul Mitchell the School-San Jose,108,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,244,89.42857142857143,3130,Avalon Institute-Aurora,217,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,2199,89.42857142857143,3130,PJ's College of Cosmetology-Glasgow,43,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,2173,89.42857142857143,3130,Pima Medical Institute-Aurora,290,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,1474,89.42857142857143,3130,Kuyper College,119,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,3074,89.42857142857143,3130,World Mission University,180,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,836,89.42857142857143,3130,Detroit Business Institute-Downriver,141,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,996,89.42857142857143,3130,Empire Beauty School-Savannah,137,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,258,89.42857142857143,3130,Academy of Cosmetology,121,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,2982,89.42857142857143,3130,Voorhees University,460,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,1041,89.42857142857143,3130,Evolve Beauty Academy,21,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,177,89.42857142857143,3130,Arizona College of Nursing-Salt Lake City,323,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,2711,89.42857142857143,3130,The Master's University and Seminary,1606,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,1655,89.42857142857143,3130,McKendree University,1600,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,12,89.42857142857143,3130,Academy for Salon Professionals,140,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,1740,89.42857142857143,3130,Millennia Atlantic University,104,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,350,89.42857142857143,3130,Best Care College,46,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,2510,89.42857142857143,3130,South University-Tampa,390,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,3114,89.42857142857143,3130,Yeshivas Be'er Yitzchok,52,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,2448,89.42857142857143,3130,Santa Ana Beauty College,74,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,1370,89.42857142857143,3130,International Salon and Spa Academy,307,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,1071,89.42857142857143,3130,Florida Career College-Hialeah,185,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,523,89.42857142857143,3130,Career Technical Institute,370,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,3019,89.42857142857143,3130,West Coast University-Miami,900,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,2929,89.42857142857143,3130,University of the Ozarks,753,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,486,89.42857142857143,3130,California Institute of the Arts,881,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,3006,89.42857142857143,3130,Waynes College of Beauty,46,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,1421,89.42857142857143,3130,John Wesley International Barber and Beauty College,61,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,1069,89.42857142857143,3130,Florida School of Traditional Midwifery,73,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,1684,89.42857142857143,3130,Mesivta of Eastern Parkway-Yeshiva Zichron Meilech,41,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,2761,89.42857142857143,3130,Tigi Hairdressing Academy-Colorado Springs,129,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,1712,89.42857142857143,3130,Midland University,1191,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,2519,89.42857142857143,3130,Southeastern College-Columbia,248,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,473,89.42857142857143,3130,California Career College,195,0,NA,NA,NA
+Private_Small,Private,Small,3130,35,2220,89.42857142857143,3130,Praxis Institute,440,0,NA,NA,NA
+Private_Medium,Private,Medium,381,4,100,95.25,381,Elmhurst University,2954,0,NA,NA,NA
+Private_Medium,Private,Medium,381,4,192,95.25,381,Middlebury College,2785,1,NA,NA,NA
+Private_Medium,Private,Medium,381,4,196,95.25,381,Molloy College,3185,0,NA,NA,NA
+Private_Medium,Private,Medium,381,4,181,95.25,381,Marquette University,7238,1,NA,NA,NA
+Private_Large,Private,Large,23,1,12,23,23,Grand Canyon University,68619,1,NA,NA,NA
