@@ -167,7 +167,7 @@ colleges <- read.csv("colleges.csv")
 ```{r}
 
 colleges <- colleges |>
-  select(INSTNM, STUFACR, COSTT4_A) 
+  select(INSTNM, PCTPELL) 
 
 data <- left_join(
   survey_main,
@@ -178,11 +178,12 @@ data <- left_join(
 datas <- data |>
   left_join(colleges, by = c("school_name" = "INSTNM")) |>
   rename(
-    fs_ratio = STUFACR,                 
-    annual_cost = COSTT4_A
-  )
+    pell = PCTPELL
+  ) |>
+  mutate(
+    median_earnings = NA_real_)
 
-write_csv(data, "datas.csv")
+write_csv(datas, "datas.csv")
 
 ```
 
@@ -265,30 +266,7 @@ For private schools, the estimated average median earning was \$40,343, with a s
 
 ```{r}
 
-q4 <- q4 |>
-  select(INSTNM, STUFACR, COSTT4_A) |>
-  filter(!is.na(STUFACR), STUFACR > 0,
-         !is.na(COSTT4_A), COSTT4_A > 0) |>
-  mutate(invSTUFACR = 1 / STUFACR)
 
-```
-
-```{r}
-set.seed(440)
-
-pps <- q4 |>
-  sample_n(size = 50, weight = invSTUFACR, replace = FALSE)
-
-N_sum   <- sum(q4$invSTUFACR)
-n_draws <- 50
-q4 <- q4 |>
-  mutate(pi_i = (invSTUFACR / N_sum) * n_draws)
-
-pps$pi_i <- q4$pi_i[ match(pps$INSTNM, q4$INSTNM) ]
-
-design_pps <- svydesign(id = ~1, probs = ~pi_i, data = pps)
-svymean(~COSTT4_A, design_pps)
-confint(svymean(~COSTT4_A, design_pps))
 ```
 
 When looking at the website, we were also interested in whether the average annual cost is proportional to faculty-student ratio. We expected a positive relationship between the two variables, as our belief is that the greater the faculty-student ratio, the more expensive a school is as they dedicate more resources and time to each student, so we inverted the original student-faculty ratio to obtain a positively correlated faculty-student ratio with average annual cost.
