@@ -95,17 +95,7 @@ The Horvitz–Thompson estimator produced an estimated total undergraduate enrol
 
 ```{r}
 
-strata_plan2 <- tribble(
-  ~type,    ~size,   ~Nh,  ~nh,
-  "Public", "Small",   824,  9,
-  "Public", "Medium",  861, 10,
-  "Public", "Large",   176,  2,
-  "Private","Small",  3132, 35,
-  "Private","Medium",  381,  4,
-  "Private","Large",    23,  1
-) # based on proportional allocation, sums to 60
-
-sample_index_df2 <- strata_plan2 |>
+sample_index_df2 <- strata_plan |>
   rowwise() |>
   mutate(sampled_index = list(sample.int(Nh, size = nh, replace = FALSE))) |>
   tidyr::unnest(sampled_index) |>
@@ -265,11 +255,34 @@ For private schools, the estimated average median earning was \$40,343, with a s
 
 ```{r}
 
+options(survey.lonely.psu = "adjust")
+
+datas <- datas %>%
+  mutate(
+    pell_prop = case_when(
+      pell > 1               ~ pell / 100,
+      pell >= 0 & pell <= 1  ~ pell,
+    )
+  )
+
+design_q4 <- svydesign(
+  id      = ~1,
+  strata  = ~stratum,
+  weights = ~weight,
+  fpc     = ~fpc,
+  data    = datas
+)
+
+pell_mean <- svymean(~pell_prop, design_q4, na.rm = TRUE)
+pell_mean
+confint(pell_mean) * 100
+
+coef(pell_mean) * 100
 
 ```
 
-When looking at the website, we were also interested in whether the average annual cost is proportional to faculty-student ratio. We expected a positive relationship between the two variables, as our belief is that the greater the faculty-student ratio, the more expensive a school is as they dedicate more resources and time to each student, so we inverted the original student-faculty ratio to obtain a positively correlated faculty-student ratio with average annual cost.
+To answer an additional question with our stratified sample, we were curious about estimating the mean percentage of undergraduate students who receive Pell grants across U.S. institutions. This is because we believe that Pell grant rates differ systematically across size and type of school- public schools typically enroll more lower-income students, leading to higher Pell grant recipients within said school, while private large universities and elite institutions may have fewer recipients. Our stratified design could give a more precise estimate of Pell recipients.
 
-To do this, we chose to use a one-stage PPS sampling to sample 50 colleges in the United States, where the measure of size $X_i$ is the faculty-student ratio to measure $Y$, the average annual cost, since we wanted to make it likely that schools with greater ratios are more likely to be selected. Therefore, our weight was $π_i = n * X_i/\sum(X_j)$ where n = 50 and $X_i$ was the faculty-student ratio for institution $i$.
+The data for the percentage of Pell grant recipients for each school in our sample was pulled from the csv on the website titled "Most Recent Institution-Level Data" and was already coded as a decimal. We used the same stratum weights and fpc as in previous questions.
 
-The Horvitz–Thompson estimator produced an average annual cost of \$29,841, with a standard error (SE) of approximately \$2707. The 95% confidence interval for average annual cost ranges from \$24,535.52 to \$35,146.72.
+The Horvitz–Thompson estimator produced an estimated mean Pell recipient percentage of 41.7%, with a standard error (SE) of approximately 2.09%. The 95% confidence interval is 37.61% to 45.79%, indicating that, on average, about two in five undergraduates at U.S. colleges in our frame receive Pell grants under this stratified design.
