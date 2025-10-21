@@ -70,19 +70,27 @@ Stratifying by both sector and size is reasonable because these are key determin
 
 options(survey.lonely.psu = "adjust")
 
-q1 <- read_csv("question 1.csv", show_col_types = FALSE)
+df <- read_csv("datas.csv", show_col_types = FALSE) %>%
+  mutate(
+    # ensure expected types
+    type = as.factor(type),
+    median_earnings = as.numeric(median_earnings),
+    weight = as.numeric(weight),
+    fpc = as.numeric(fpc)
+  )
 
-design <- svydesign(
-  id = ~1,
+# Survey design: stratified SRS with your stratum labels, weights, and FPCs
+des <- svydesign(
+  id     = ~1,
   strata = ~stratum,
-  weights = ~weight,
-  fpc = ~fpc,
-  data = q1
+  weights= ~weight,
+  fpc    = ~fpc,
+  data   = df
 )
 
-total_est <- svytotal(~undergrad_enrollment, design, na.rm = TRUE)
-total_est
-confint(total_est)
+tot_undergrad <- svytotal(~undergrad_enrollment, des, na.rm = TRUE)
+tot_undergrad
+confint(tot_undergrad)
 
 
 ```
@@ -190,74 +198,37 @@ write_csv(datas, "datas.csv")
 
 What is the average of the median earnings among alumni from public schools? From private schools (combine for profit and not for profit private schools)?
 
-```{r}
-strata_plan3 <-  tribble(
-  ~type,        ~avg_annual_cost,   ~Nh,   ~nh,
-  "Public",     "<=20k",       1691,  18,
-  "Public",     ">20k",       201,  2,
-  "Private",    "<=20k",       1510,  16,
-  "Private",    ">20k",       2144,  24,
-) 
-
-sample_index_df3 <- strata_plan3 %>%
-  rowwise() %>%
-  mutate(sampled_index = list(sample.int(Nh, size = nh, replace = FALSE))) %>%
-  tidyr::unnest(sampled_index) %>%
-  ungroup()
-
-# Create template for data collection
-template3 <- sample_index_df3 %>%
-  mutate(
-    stratum = paste(type, avg_annual_cost, sep = "_"),
-    weight  = Nh / nh,  # HT weight
-    fpc     = Nh
-  ) %>%
-  select(stratum, type, avg_annual_cost, Nh, nh, sampled_index, weight, fpc) %>%
-  mutate(
-    school_name = "",
-    median_earning = NA_real_
-  )
-
-write_csv(template3, "question 3.csv")
-
-```
 
 ```{r}
-options(survey.lonely.psu = "adjust")
-
-q3 <- read_csv("question 3.csv", show_col_types = FALSE)
-
-design_q3 <- svydesign(
-  id     = ~1,
-  strata = ~stratum,
-  weights= ~weight,
-  fpc    = ~fpc,
-  data   = q3
+res_by_type <- svyby(
+  ~median_earnings,
+  ~type,
+  des,
+  svymean,
+  na.rm   = TRUE,
+  vartype = c("se", "ci")
 )
 
-# Estimate average median earnings for Public schools
-mean_public <- svymean(~median_earning,
-                       subset(design_q3, type == "Public"),
-                       na.rm = TRUE)
+out <- res_by_type %>%
+  transmute(
+    type = as.character(type),
+    mean  = median_earnings,
+    SE    = se,
+    CI_l  = ci_l,
+    CI_u  = ci_u
+  ) %>%
+  mutate(
+    across(c(mean, SE, CI_l, CI_u), round, 0)
+  )
 
-# Estimate average median earnings for Private schools
-mean_private <- svymean(~median_earning,
-                        subset(design_q3, type == "Private"),
-                        na.rm = TRUE)
-
-# Display results with 95% confidence intervals
-mean_public
-confint(mean_public)
-
-mean_private
-confint(mean_private)
+print(out)
 ```
 
-Using a stratified simple random sample with proportional allocation, we estimated the average of the median alumni earnings for public and private institutions separately. We stratified colleges by average annual cost because tuition and fees are closely related to institutional characteristics that likely affect alumni earnings, such as available resources, program quality, and student demographics. By dividing schools into low-cost (≤ \$20,000) and high-cost (\> \$20,000) groups, we ensured that both more affordable and more expensive institutions were proportionally represented in the sample.
+Using a stratified simple random sample with proportional allocation, we estimated the average of the median alumni earnings using a stratified simple random sample with proportional allocation, based on the same six strata defined by school type (public vs. private) and size (small, medium, large).
 
-The Horvitz–Thompson estimator produced an estimated average median earning of \$43,969 among alumni from public schools, with a standard error (SE) of approximately \$1,695. The corresponding 95% confidence interval ranges from \$40,648 to \$47,290.
+The Horvitz–Thompson estimator produced an estimated average median earning of \$45,650 among alumni from public schools, with a standard error (SE) of approximately \$2,387. The corresponding 95% confidence interval ranges from \$40,971 to \$50,329.
 
-For private schools, the estimated average median earning was \$40,343, with a standard error (SE) of approximately \$2,703. The 95% confidence interval for private-school alumni median earnings ranges from \$35,046 to \$45,640.
+For private schools, the estimated average median earning was \$44,489, with a standard error (SE) of approximately \$3,438. The 95% confidence interval for private-school alumni median earnings ranges from \$37,750 to \$51,228.
 
 # 4.
 
