@@ -23,9 +23,6 @@ library(survey)
 set.seed(322)
 ```
 
-# 1.
-
-**What is an estimate of the total number of undergraduate students enrolled in colleges? Design your survey with the goal of answering this question most accurately.**
 
 ```{r}
 
@@ -38,35 +35,6 @@ strata_plan <- tribble(
   "Private","Medium",  381,  4,
   "Private","Large",    23,  1
 ) # based on proportional allocation, sums to 60
-
-sample_index_df <- strata_plan %>%
-  rowwise() %>%
-  mutate(sampled_index = list(sample.int(Nh, size = nh, replace = FALSE))) %>%
-  tidyr::unnest(sampled_index) %>%
-  ungroup()
-
-# Leave name and undergrad_enrollment blank/NA to enter later.
-template <- sample_index_df %>%
-  mutate(
-    stratum = paste(type, size, sep = "_"),
-    weight  = Nh / nh,   # HT weight for each sampled unit in stratum
-    fpc     = Nh         # finite population correction (for variance)
-  ) %>%
-  select(stratum, type, size, Nh, nh, sampled_index, weight, fpc) %>%
-  mutate(
-    school_name = "",               # <-- fill manually
-    undergrad_enrollment = NA_real_, # <-- fill manually
-  )
-
-write_csv(template, "question 1.csv")
-
-```
-
-We estimated the total number of U.S. undergraduates using a stratified simple random sample from the College Scorecard. We defined six strata by crossing school type (Public vs. Private, where Private combines non-profit and for-profit) with size (Small, Medium, Large). For each stratum, we constructed a sampling frame directly from the Scorecard search pages filtered to undergraduate-granting programs, then randomly sampled institutions within stratum. We recorded each sampled school’s undergraduate enrollment and used a Horvitz–Thompson estimator for the population total with stratum weights $w_h = N_h/n_h$ and finite population corrections $N_h$. Because one of the strata (Private–Large) contained only a single sampled institution, a lonely PSU adjustment was applied using the "adjust" method in the survey package. This method inflates the estimated variance slightly to account for strata with only one primary sampling unit (PSU), providing a more conservative and reliable confidence interval.
-
-Stratifying by both sector and size is reasonable because these are key determinants of enrollment variation across U.S. colleges. Public and private institutions differ substantially in average enrollment, and within each sector, small, medium, and large schools have relatively homogeneous student counts. Using six strata therefore reduces variability within each group while capturing meaningful differences across groups.
-
-```{r}
 
 options(survey.lonely.psu = "adjust")
 
@@ -88,11 +56,21 @@ des <- svydesign(
   data   = df
 )
 
+```
+
+We defined six strata by crossing school type (Public vs. Private, where Private combines non-profit and for-profit) with size (Small, Medium, Large). For each stratum, we constructed a sampling frame directly from the Scorecard search pages, then randomly sampled institutions within each stratum using proportional allocation. We recorded variables relevant to each research question—such as undergraduate enrollment, presence of a statistics major, median alumni earnings, and percentage of students receiving Pell Grants—and used appropriate Horvitz–Thompson estimators with stratum weights $w_h = N_h/n_h$ and finite population corrections $N_h$. Because one of the strata (Private–Large) contained only a single sampled institution, a lonely PSU adjustment was applied using the "adjust" method in the survey package. This method inflates the estimated variance slightly to account for strata with only one primary sampling unit (PSU), providing a more conservative and reliable confidence interval.
+
+Stratifying by both sector and size is reasonable because these dimensions capture key structural differences among U.S. institutions that influence all measured outcomes—enrollment, program offerings, alumni earnings, and financial aid distribution. Public and private colleges differ substantially in student body size, tuition levels, and available programs, while grouping schools by size ensures that institutions with similar characteristics are compared within the same category. This stratification reduces variability within strata and captures meaningful differences across them, improving the precision and representativeness of all estimates compared to a simple random sample.
+
+# 1.
+
+**What is an estimate of the total number of undergraduate students enrolled in colleges? Design your survey with the goal of answering this question most accurately.**
+
+
+```{r}
 tot_undergrad <- svytotal(~undergrad_enrollment, des, na.rm = TRUE)
 tot_undergrad
 confint(tot_undergrad)
-
-
 ```
 
 The Horvitz–Thompson estimator produced an estimated total undergraduate enrollment of 15,598,354 students, with a standard error (SE) of approximately 1,786,576. The 95% confidence interval for the total enrollment ranges from 12,096,730 to 19,099,978 students.
