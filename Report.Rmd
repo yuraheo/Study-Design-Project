@@ -40,7 +40,6 @@ options(survey.lonely.psu = "adjust")
 
 df <- read_csv("datas.csv", show_col_types = FALSE) %>%
   mutate(
-    # ensure expected types
     type = as.factor(type),
     median_earnings = as.numeric(median_earnings),
     weight = as.numeric(weight),
@@ -49,8 +48,6 @@ df <- read_csv("datas.csv", show_col_types = FALSE) %>%
 
 kable(strata_plan, caption = "Stratified Sampling Plan Based on School Type and Size")
 
-
-# Survey design: stratified SRS with your stratum labels, weights, and FPCs
 des <- svydesign(
   id     = ~1,
   strata = ~stratum,
@@ -84,25 +81,17 @@ The Horvitz–Thompson estimator produced an estimated total undergraduate enrol
 ```{r}
 options(survey.lonely.psu = "adjust")
 
-design_q2 <- svydesign(
-  id = ~1,
-  strata = ~stratum,
-  weights = ~weight,
-  fpc = ~fpc,
-  data = datas
-)
-
-fraction_est <- svymean(~statistics_major, design_q2, na.rm = TRUE)
+fraction_est <- svymean(~statistics_major, des, na.rm = TRUE)
 fraction_est
 confint(fraction_est)
 
 ```
 
-To estimate the fraction of colleges in the United States that offer a major in statistical science, we chose used the same stratified simple random sample from the College Scorecard, using the same six strata of school type (Public and Private) with size (Small, Medium, Large), believing that public vs. private colleges, and small vs. large colleges may offer very different likelihoods of offering a statistics major while having similar academic offerings within strata.
+To estimate the fraction of colleges in the United States that offer a major in statistical science, we used the same stratified simple random sample, believing that public vs. private colleges, and small vs. large colleges may offer very different likelihoods of offering a statistics major while having similar academic offerings within strata.
 
-After confirming that the $N_h$ for each stratum were about the same as Question 1 (even after adding Graduate programs to our selection) and therefore the proportional allocation to each $n_h$ would be the same, we used the same random sample of schools from each stratum, recording whether each sampled school offered a major in statistical science (1 if yes, 0 if no). Again, we used a Horvitz–Thompson estimator for the population mean with stratum weights $w_h = N_h/n_h$ and finite population corrections $N_h$, also adjusting for the Private–Large strata that contained only a single sampled institution.
+After confirming that the $N_h$ for each stratum were about the same as Question 1, we used the same random sample of schools from each stratum, recording whether each sampled school offered a major in statistical science (1 if yes, 0 if no). Again, we used a Horvitz–Thompson estimator for the population mean with stratum weights $w_h = N_h/n_h$ and finite population corrections $N_h$, also adjusting for the Private–Large strata that contained only a single sampled institution.
 
-The Horvitz–Thompson estimator produced an estimated 10.4% of colleges in the United States that offer a statistics major, with a standard error (SE) of approximately 2.95%. The 95% confidence interval for the total number of colleges offering a statistics major ranges from 4.62% to 16.2%.
+The Horvitz–Thompson estimator produced an estimated 10.4% of colleges in the United States that offer a statistics major, with a standard error (SE) of approximately 2.95%. The 95% confidence interval for the total number of colleges offering a statistics major ranges from 4.62% to 16.2%. This makes sense, as statistics is still more of a specialized field compared to broader majors such as mathematics or computer science. Many community colleges or smaller schools may not have the demand to support a statistics department, but larger universities are more likely to offer one.
 
 # **3.**
 
@@ -147,23 +136,7 @@ For private schools, the estimated average median earning was \$44,489, with a s
 
 options(survey.lonely.psu = "adjust")
 
-datas <- datas %>%
-  mutate(
-    pell_prop = case_when(
-      pell > 1               ~ pell / 100,
-      pell >= 0 & pell <= 1  ~ pell,
-    )
-  )
-
-design_q4 <- svydesign(
-  id      = ~1,
-  strata  = ~stratum,
-  weights = ~weight,
-  fpc     = ~fpc,
-  data    = datas
-)
-
-pell_mean <- svymean(~pell_prop, design_q4, na.rm = TRUE)
+pell_mean <- svymean(~pell, des, na.rm = TRUE)
 pell_mean
 confint(pell_mean) * 100
 
@@ -175,4 +148,4 @@ To answer an additional question with our stratified sample, we were curious abo
 
 The data for the percentage of Pell grant recipients for each school in our sample was pulled from the csv on the website titled "Most Recent Institution-Level Data" and was already coded as a decimal. We used the same stratum weights and fpc as in previous questions.
 
-The Horvitz–Thompson estimator produced an estimated mean Pell recipient percentage of 41.7%, with a standard error (SE) of approximately 2.09%. The 95% confidence interval is 37.61% to 45.79%, indicating that, on average, about two in five undergraduates at U.S. colleges in our frame receive Pell grants under this stratified design.
+The Horvitz–Thompson estimator produced an estimated mean Pell recipient percentage of 41.7%, with a standard error (SE) of approximately 2.09%. The 95% confidence interval is 37.61% to 45.79%, indicating that, on average, about two in five undergraduates at U.S. colleges in our frame receive Pell grants under this stratified design. This result reflects the national importance of federal aid in college access, and our design was able to capture the differences in socioeconomic composition across school types.
