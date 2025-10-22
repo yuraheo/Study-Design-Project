@@ -23,7 +23,6 @@ library(survey)
 set.seed(322)
 ```
 
-
 ```{r}
 
 strata_plan <- tribble(
@@ -66,7 +65,6 @@ Stratifying by both sector and size is reasonable because these dimensions captu
 
 **What is an estimate of the total number of undergraduate students enrolled in colleges? Design your survey with the goal of answering this question most accurately.**
 
-
 ```{r}
 tot_undergrad <- svytotal(~undergrad_enrollment, des, na.rm = TRUE)
 tot_undergrad
@@ -80,44 +78,14 @@ The Horvitz–Thompson estimator produced an estimated total undergraduate enrol
 **What fraction of colleges have a major in statistical science? Use your sample to estimate this fraction; do not get the answer by filtering the schools.**
 
 ```{r}
-
-sample_index_df2 <- strata_plan |>
-  rowwise() |>
-  mutate(sampled_index = list(sample.int(Nh, size = nh, replace = FALSE))) |>
-  tidyr::unnest(sampled_index) |>
-  ungroup()
-
-template2 <- sample_index_df2 |>
-  mutate(
-    stratum = paste(type, size, sep = "_"),
-    weight  = Nh / nh,   
-    fpc     = Nh         
-  ) |>
-  select(stratum, type, size, Nh, nh, sampled_index, weight, fpc) |>
-  mutate(
-    school_name = "",               # <-- fill manually
-    statistics_major = NA_real_, # <-- fill manually
-  )
-
-write_csv(template2, "question 2.csv")
-
-```
-
-```{r}
 options(survey.lonely.psu = "adjust")
-
-q2 <- read_csv("question 2.csv", show_col_types = FALSE)
 
 design_q2 <- svydesign(
   id = ~1,
   strata = ~stratum,
   weights = ~weight,
   fpc = ~fpc,
-  data = q2
-  
-  |>
-  mutate(invSTUFACR = 1 / STUFACR)
-
+  data = datas
 )
 
 fraction_est <- svymean(~statistics_major, design_q2, na.rm = TRUE)
@@ -165,7 +133,6 @@ write_csv(datas, "datas.csv")
 # **3.**
 
 What is the average of the median earnings among alumni from public schools? From private schools (combine for profit and not for profit private schools)?
-
 
 ```{r}
 res_by_type <- svyby(
