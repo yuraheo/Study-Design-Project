@@ -128,7 +128,7 @@ The Horvitz–Thompson estimator produced an estimated average median earning of
 
 For private schools, the estimated average median earning was \$44,489, with a standard error (SE) of approximately \$3,438. The 95% confidence interval for private-school alumni median earnings ranges from \$37,750 to \$51,228.
 
-Given their overlapping confidence intervals between public and private schools, there is no statistically significant difference in typical alumni earnings between the two groups. While public-school alumni appear to earn slightly more on average, the uncertainty in the estimates suggests that overall earnings outcomes are comparable across institution types. 
+Given their overlapping confidence intervals between public and private schools, there is no statistically significant difference in typical alumni earnings between the two groups. While public-school alumni appear to earn slightly more on average, the uncertainty in the estimates suggests that overall earnings outcomes are comparable across institution types.
 
 # 4.
 
