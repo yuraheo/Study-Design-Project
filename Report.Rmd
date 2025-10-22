@@ -100,36 +100,6 @@ After confirming that the $N_h$ for each stratum were about the same as Question
 
 The Horvitz–Thompson estimator produced an estimated 10.4% of colleges in the United States that offer a statistics major, with a standard error (SE) of approximately 2.95%. The 95% confidence interval for the total number of colleges offering a statistics major ranges from 4.62% to 16.2%.
 
-```{r}
-
-survey_main <- read_csv("question 1.csv")
-stats_major <- read_csv("question 2.csv")
-colleges <- read.csv("colleges.csv")
-
-```
-
-```{r}
-
-colleges <- colleges |>
-  select(INSTNM, MD_EARN_WNE_P10, PCTPELL) 
-
-data <- left_join(
-  survey_main,
-  stats_major |> select(school_name, statistics_major),
-  by = "school_name"
-)
-
-datas <- data |>
-  left_join(colleges, by = c("school_name" = "INSTNM")) |>
-  rename(
-    pell = PCTPELL,
-    median_earnings = MD_EARN_WNE_P10
-  )
-
-write_csv(datas, "datas.csv")
-
-```
-
 # **3.**
 
 What is the average of the median earnings among alumni from public schools? From private schools (combine for profit and not for profit private schools)?
